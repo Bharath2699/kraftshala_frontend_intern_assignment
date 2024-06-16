@@ -160,6 +160,13 @@ p{
    font-weight: 600;
 }
 
+.error{
+    font-size: 26px;
+    color:red;
+    font-weight: 600;
+    text-align: center;
+}
+
 @media screen and (max-width:767px){
    p{
     font-size: 13px;
@@ -174,7 +181,7 @@ span{
 
 table{
     background-color:rgb(171, 167, 167);
-    height: 400px;
+    height: 380px;
     width: 500px;
 }
 

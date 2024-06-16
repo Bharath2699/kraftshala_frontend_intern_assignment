@@ -4,13 +4,16 @@ import { CiLight } from "react-icons/ci";
 import './App.css';
 
 function App() {
-  const [isDarkTheme,setDarkTheme]=useState(false)
-  const [city,setCity]=useState("")
-  const [temperature,setTemperature]=useState("")
-  const [name,setName]=useState("")
-  const [result,setResult]=useState("")
-  const [error,setError]=useState("")
-  const dateTme=new Date()
+  const [isDarkTheme,setDarkTheme]=useState(false);
+  const [city,setCity]=useState("");
+  const [temperature,setTemperature]=useState("");
+  const [name,setName]=useState("");
+  const [result,setResult]=useState("");
+  const [error,setError]=useState("");
+  const dateTme=new Date();
+  const [humidity,setHumidity]=useState("");
+  const [weatherDescription,setWeatherDescription]=useState("");
+  const [windSpeed,setWindSpeed]=useState("");
 
   const showError=(error)=>{
     setResult(false)
@@ -24,7 +27,10 @@ function App() {
       setResult(true)
       const temp=Math.round(data.main.temp-273)
     setTemperature(temp);
-    setName(data.name)
+    setName(data.name);
+    setHumidity(data.main.humidity);
+    setWeatherDescription(data.weather[0].description);
+    setWindSpeed(data.wind.speed)
     }else{
       showError(data.message)
     }
@@ -70,7 +76,7 @@ const submitHandler=(e)=>{
               </tr>
               <tr>
                 <td><span>Temperature</span></td>
-                <td><p>{temperature} degree Celcius</p></td>
+                <td><p>{temperature} degree Celsius</p></td>
               </tr>
               <tr>
                 <td><span>Date</span></td>
@@ -79,6 +85,18 @@ const submitHandler=(e)=>{
               <tr>
                 <td><span>Time</span></td>
                 <td><p>{dateTme.getHours()}:{dateTme.getMinutes()}:{dateTme.getSeconds()}</p></td>
+              </tr>
+              <tr>
+                <td><span>Humidity</span></td>
+                <td><p>{humidity}%</p></td>
+              </tr>
+              <tr>
+                <td><span>Weather Description</span></td>
+                <td><p>{weatherDescription}</p></td>
+              </tr>
+              <tr>
+                <td><span>Wind Speed</span></td>
+                <td><p>{windSpeed} m/s</p></td>
               </tr>
             </table>
             </div>
